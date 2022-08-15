@@ -2,8 +2,6 @@
 Jenkins is a self-contained Java-based program, ready to run out-of-the-box, with packages for Windows, Mac OS X and other Unix-like operating systems. As an extensible automation server, Jenkins can be used as a simple CI server or turned into the continuous delivery hub for any project.
 
 
-### Follow this artical [On YouTube](https://youtu.be/ERR7cqW28FY)
-
 
 ### Prerequisites
 1. EC2 Instance 
@@ -12,15 +10,29 @@ Jenkins is a self-contained Java-based program, ready to run out-of-the-box, wit
 1. Java 11 should be installed  
 
 
+
+To quickly setup and install Java on Ubuntu, follow these steps:
+
+**Verify that you have not already installed Java
+Issue the sudo apt update command
+Install Ubuntu’s default JDK with apt
+Run Java on the command line to test the install
+Set JAVA_HOME globally for all Ubuntu users**
+
+java - version
+Command 'java' not found, but can be installed with:
+sudo apt install default-jdk
+sudo apt install default-jre
+sudo apt update
+
 ## Install Jenkins
  You can install jenkins using the rpm or by setting up the repo. We will set up the repo so that we can update it easily in the future.
-1. Get the latest version of jenkins from https://pkg.jenkins.io/redhat-stable/ and install
-   ```sh
-   sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-   sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-   amazon-linux-extras install epel 
-   amazon-linux-extras install java-openjdk11  
-   
+1. wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+2. sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+3. sudo apt update
+
+sudo apt install jenkins >> Install jenkins 
+    
    #on RedHat/CentOs 
    #yum install epel-release # repository that provides 'daemonize'
    #yum install java-11-openjdk-devel
